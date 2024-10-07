@@ -1,0 +1,19 @@
+{
+  "name": "devbharat",
+  "version": "1.0.0",
+  "description": "A community for Developers.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Bharat Kumawat",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
