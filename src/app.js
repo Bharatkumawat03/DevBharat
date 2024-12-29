@@ -6,10 +6,22 @@ const cors = require('cors');
 
 require("dotenv").config();
 
-app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true,
-}));
+// app.use(cors({
+//   origin: "http://localhost:5173",
+//   credentials: true,
+// }));
+
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://devbharat-web.onrender.com",
+    ],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+  })
+);
 
 
 // app.use(cors({
