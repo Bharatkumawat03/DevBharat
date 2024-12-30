@@ -2,7 +2,7 @@ const express = require("express");
 const connectDB = require("./config/database");
 const app = express();
 const cookieParser = require("cookie-parser");
-const cors = require('cors');
+const cors = require("cors");
 
 require("dotenv").config();
 
@@ -11,18 +11,13 @@ require("dotenv").config();
 //   credentials: true,
 // }));
 
-
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://devbharat-web.onrender.com",
-    ],
+    origin: ["http://localhost:5173", "https://devbharat-web.onrender.com"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
 );
-
 
 // app.use(cors({
 //   origin: "http://localhost:5173", // Your frontend's URL
@@ -39,7 +34,6 @@ app.use(
 //   res.sendStatus(204); // No content for OPTIONS requests
 // });
 
-
 app.use(express.json());
 app.use(cookieParser());
 
@@ -55,6 +49,9 @@ app.use("/", userRouter);
 
 connectDB()
   .then(() => {
+    app.get("/", (req, res) => {
+      res.send("API WORKING");
+    });
     console.log("Database connection established...");
     app.listen(process.env.PORT, () => {
       console.log("Server is listening on port 3000...");
