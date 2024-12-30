@@ -3,7 +3,6 @@ const connectDB = require("./config/database");
 const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const path = require('path');
 
 require("dotenv").config();
 
@@ -34,14 +33,6 @@ app.use("/", authRouter);
 app.use("/", profileRouter);
 app.use("/", requestRouter);
 app.use("/", userRouter);
-
-// Serve static files from the "build" directory
-app.use(express.static(path.join(__dirname, 'build')));
-
-// Catch-all handler for all other routes
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-});
 
 connectDB()
 .then(() => {
