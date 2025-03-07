@@ -9,6 +9,14 @@ const messageSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    status:{
+        type: String,
+        enum: {
+            values: ["delivered", "seen"],
+            message: `{VALUE} is not a valid status type`,
+          },
+        default: "delivered"
+    }
 },
 {timestamps: true}
 );

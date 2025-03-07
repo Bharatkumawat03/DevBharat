@@ -14,7 +14,7 @@ require("dotenv").config();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://devbharat-web.onrender.com"],
+    origin: "*",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ['Content-Type', 'Authorization'], 
     credentials: true,
