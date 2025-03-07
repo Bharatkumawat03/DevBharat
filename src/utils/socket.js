@@ -10,7 +10,7 @@ const getSecretRoomId = (userId, targetUserId) => {
 const initializeSocket = (server) => {
   const io = socket(server, {
     cors: {
-      origin: ["http://localhost:5173", "https://devbharat-web.onrender.com", "https://klchat.onrender.com"],
+      origin: "*",
     },
   });
 
