@@ -81,6 +81,7 @@ const userSchema = new mongoose.Schema(
     skills: {
       type: Array,
     },
+    fcmToken: { type: String },
   },
   {
     timestamps: true,

@@ -18,7 +18,7 @@ const initializeSocket = (server) => {
     socket.on("joinChat", async ({firstName, userId, targetUserId}) => {
         const roomId = getSecretRoomId(userId, targetUserId);
 
-        console.log(firstName + " joining room: " + roomId);
+        // console.log(firstName + " joining room: " + roomId);
         socket.join(roomId);
 
         await Chat.updateMany({
@@ -36,7 +36,7 @@ const initializeSocket = (server) => {
       
       try {
           const roomId = getSecretRoomId(userId, targetUserId);
-          console.log(firstName + "  " + text);
+          // console.log(firstName + "  " + text);
 
           let chat = await Chat.findOne({
             participants: {$all: [userId, targetUserId]}
@@ -95,6 +95,13 @@ const initializeSocket = (server) => {
         console.log(error);
       }
     });
+
+
+    socket.on("checkRoom", (roomId, callback) => {
+      const room = io.sockets.adapter.rooms.get(roomId);
+      const isActive = room && room.size > 0;
+      callback(isActive);
+  });
 
 
     socket.on("disconnect", () => {});
