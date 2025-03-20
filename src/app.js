@@ -14,7 +14,7 @@ require("dotenv").config();
 
 app.use(
   cors({
-    origin: '*',
+    origin: '["http://localhost:5173", "https://devbharat-web.onrender.com", "https://klchat.onrender.com"]',
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ['Content-Type', 'Authorization'], 
     credentials: true,
