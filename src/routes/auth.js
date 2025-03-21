@@ -58,7 +58,7 @@ authRouter.post("/login", async (req, res) => {
       });
       res.send(user);
     } else {
-      throw new Error("Invalid Email or Password");
+      throw new Error("Invalid Password");
     }
   } catch (err) {
     res.status(400).send("Error : " + err.message);
