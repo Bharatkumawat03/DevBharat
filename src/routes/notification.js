@@ -12,7 +12,7 @@ admin.initializeApp({
 
 notificationRouter.post('/send-notification', userAuth, async (req, res) => {
     const {userId, title, body, linkUrl } = req.body;
-    // const userId = req.user._id;
+    const myId = req.user._id;
     // console.log(linkUrl);
 
     try {
@@ -42,7 +42,8 @@ notificationRouter.post('/send-notification', userAuth, async (req, res) => {
             data: {
                 title,
                 body,
-                click_action: linkUrl
+                click_action: linkUrl,
+                senderId: myId.toString()
             }
         };
 

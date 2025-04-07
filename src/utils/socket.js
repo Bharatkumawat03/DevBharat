@@ -96,6 +96,17 @@ const initializeSocket = (server) => {
       }
     });
 
+    socket.on("videoCall", (data) => {
+      if (!data.userId || !data.targetUserId) {
+        console.log("Missing user IDs in videoCall event:", data);
+        return;
+      }
+      
+      const roomId = getSecretRoomId(data.userId, data.targetUserId);
+      // console.log(`VideoCall event in room ${roomId}:`, data.type);
+      
+      io.to(roomId).emit("videoCall", data);
+    });
 
     socket.on("checkRoom", (roomId, callback) => {
       const room = io.sockets.adapter.rooms.get(roomId);
